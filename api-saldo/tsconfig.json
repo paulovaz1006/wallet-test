@@ -6,6 +6,10 @@
     "strict": true,         
     "skipLibCheck": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,                             
+    "experimentalDecorators": true,   
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strictPropertyInitialization": false,
   }
 }

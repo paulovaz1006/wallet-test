@@ -1,12 +1,12 @@
 import express from "express";
 import "dotenv";
 import cors from 'cors';
-import routes from "../routes";
+import routers from "../routes/balance.router";
 
 const server = express();
 
 server.use(cors())
 server.use(express.json())
-server.use(routes)
+server.use(routers)
 
 export default server

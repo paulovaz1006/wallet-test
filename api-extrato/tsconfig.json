@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2016",        
+    "esModuleInterop": true,      
+    "forceConsistentCasingInFileNames": true,         
+    "strict": true,         
+    "skipLibCheck": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,   
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./"
+  }
+}
