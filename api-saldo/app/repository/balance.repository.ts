@@ -22,6 +22,10 @@ class BalanceRepository {
       return "Error"
     }
   }
+
+  async save(payload: any) {
+    return this.repositoryEntity.save(payload);
+  }
 }
 
 export { BalanceRepository }

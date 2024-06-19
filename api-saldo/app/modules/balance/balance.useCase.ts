@@ -20,6 +20,11 @@ class BalanceUseCase {
 
     return updateBalance;
   }
+
+  async post(payload: any) {
+    const updateBalance = await this.balanceRepository.save(payload);
+    return updateBalance;
+  }
 }
 
 export {BalanceUseCase}

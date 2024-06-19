@@ -35,6 +35,17 @@ class BalanceController  {
       res.status(HTTPStatus.NOT_FOUND).send("Failed to update balance");
     }
   }
+
+  post = async (req: Request, res: Response): Promise<string | any> => {
+    const payload: TBalance = req.body;
+
+    try {
+      const success = await this.balanceUseCase.post(payload);
+      res.status(HTTPStatus.OK).json(success);
+    } catch (err) {
+      res.status(HTTPStatus.NOT_FOUND).send("Failed to create balance");
+    }
+  }  
 }
 
 export {BalanceController} 
