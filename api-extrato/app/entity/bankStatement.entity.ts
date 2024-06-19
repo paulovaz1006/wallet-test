@@ -7,7 +7,7 @@ export default class BankStatementEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column()
+    @Column({ type: 'float' })
     amount: number;
 
     @Column()

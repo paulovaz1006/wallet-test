@@ -6,7 +6,7 @@ export default class AccountsEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column()
+    @Column({ type: 'float' })
     balance: number;
 
     @Column()
