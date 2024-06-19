@@ -9,7 +9,7 @@ class BalanceController  {
     this.balanceUseCase = new BalanceUseCase()
   }
 
-  async get(req: Request, res: Response): Promise<string | any> {
+  get = async (req: Request, res: Response): Promise<string | any> => {
     const { user_id }: TBalance = req.params;
 
     if (!user_id) return res.status(HTTPStatus.UNPROCESSABLE).send("User id is required");
@@ -22,7 +22,7 @@ class BalanceController  {
     }
   }
 
-  async put(req: Request, res: Response): Promise<string | any> {
+  put = async (req: Request, res: Response): Promise<string | any> => {
     const { user_id }: TBalance = req.params;
     const payload: TBalance = req.body;
 
