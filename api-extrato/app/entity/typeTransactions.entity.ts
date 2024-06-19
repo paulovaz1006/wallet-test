@@ -9,6 +9,6 @@ export default class TypeTransactionsEntity {
     @Column()
     type: string;
 
-    @OneToMany(() => BankStatement, bankStatement => bankStatement.typeTransaction)
-    bankStatements: BankStatement[];
+    @OneToMany(() => BankStatement, bankStatement => bankStatement.type_transaction_id)
+    bank_statements: BankStatement[];
 }

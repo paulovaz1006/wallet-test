@@ -19,8 +19,8 @@ export default class BankStatementEntity {
     @Column()
     user_id: string;
 
-    @ManyToOne(() => TypeTransactions, typeTransaction => typeTransaction.bankStatements)
-    typeTransaction: TypeTransactions;
+    @ManyToOne(() => TypeTransactions, typeTransaction => typeTransaction.bank_statements)
+    type_transaction_id: TypeTransactions;
 
     constructor(date = new Date(), description = "Not informed") {
         this.id = uuid();

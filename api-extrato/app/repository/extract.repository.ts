@@ -15,8 +15,14 @@ class ExtractRepository {
 
   async save(payload: any) { 
     const bankStatementEntity = new BankStatementEntity()
-    
-    return await this.repositoryEntity.save({...payload, ...bankStatementEntity})
+    const {user_id, type_transaction_id, amount} = payload;
+    const values = {
+      ...bankStatementEntity,
+      user_id,
+      type_transaction_id,
+      amount
+    }
+    return await this.repositoryEntity.save(values)
   }
 }
 
