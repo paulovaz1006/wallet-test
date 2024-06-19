@@ -1,10 +1,10 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import TestEntity from "./app/entity/Test.entity"
 
 export const AppDataSource = new DataSource({
     type :"sqlite",
-    database: "./app/database/test.sqlite",
-    entities: [TestEntity],
+    database: "./app/database/bank_statement.sqlite",
+    entities: ["./app/entity/*.ts"],
+    migrations: ["./app/database/migrations/*.ts"],
     synchronize: true
 })

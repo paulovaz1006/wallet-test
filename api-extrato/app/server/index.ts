@@ -1,7 +1,7 @@
 import express from "express";
 import "dotenv";
 import cors from 'cors';
-import routers from "../routes/test.router";
+import routers from "../routes/extract.router";
 
 const server = express();
 

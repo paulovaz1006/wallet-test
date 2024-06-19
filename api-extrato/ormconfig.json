@@ -1,0 +1,12 @@
+{
+  "type": "sqlite",
+  "database": "./app/database/bank_statement.sqlite",
+  "entities": ["./app/entity/*.ts"],
+  "migrations": ["./app/database/migrations/*.ts"],
+  "synchronize": true,
+  "logging": false,
+  "cli": {
+    "entitiesDir": "./app/entity",
+    "migrationsDir": "./app/database/migrations"
+  }
+}

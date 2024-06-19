@@ -10,7 +10,6 @@ Requisitos:
       - Compras, 
       - Cancelamento 
       - Estorno.
-      - transferencia (opcional meu)
   - Considere que esse eventos podem: 
     - vir de diversos canais 
     - em grandes volumes 
@@ -26,3 +25,16 @@ Alguns pré-requisitos:
 - Deverá ser distribuída em containers Docker;
 - Deverá ser criado o desenho de arquitetura da solução (incluir no README do projeto);
 - Deverá ser disponibilizado em um repositório Git.
+
+
+todo
+
+- colocar no docker
+- adicionar nginx
+- criar migrations
+- api gateway
+- rever o fluxo para ver oque falta (talvez proxy e mensageria)
+- api de user para ter todo o fluxo
+- swagger
+- testes
+- fazer o readme de cada api
