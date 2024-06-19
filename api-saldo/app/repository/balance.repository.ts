@@ -19,7 +19,7 @@ class BalanceRepository {
       getUser.balance = amount;
       this.repositoryEntity.save(getUser);
     } else {
-      return "not"
+      return "Error"
     }
   }
 }
