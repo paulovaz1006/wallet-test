@@ -9,14 +9,22 @@ class UserUseCase {
   }
 
   async saveData(payload: any) {
+    const userExists = await this.userRepository.findByCpf(payload.cpf);
+
+    if (userExists) return {cpf: userExists.cpf, message: "User already exists"};
+
     const result = await this.userRepository.save(payload);
+    
     if (result) {
       const balanceService = new BalanceService()
 
       try {
-        console.log(result)
-        const createBalance = await balanceService.createBalance(result.id, 1000)
-        return createBalance
+        await balanceService.createBalance(result.id, 1000)
+        return {
+          id: result.id,
+          name: result.name,          
+          message: "User and balance created successfully"
+        }
       } catch (err) {
         return err
       }

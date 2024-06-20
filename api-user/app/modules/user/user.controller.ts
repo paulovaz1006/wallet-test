@@ -14,6 +14,7 @@ class UserController  {
 
     try {
       const result = await this.userUseCase.saveData(payload)
+      
       res.status(HTTPStatus.OK).json(result);
     } catch (err) {
       console.error(err);

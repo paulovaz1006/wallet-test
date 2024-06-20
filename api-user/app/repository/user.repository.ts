@@ -13,6 +13,10 @@ class UserRepository {
     
     return await this.repositoryEntity.save({...payload, ...userEntity})
   }
+
+  async findByCpf(cpf: number) { 
+    return await this.repositoryEntity.findOneBy({cpf})
+  }
 }
 
 export { UserRepository }
