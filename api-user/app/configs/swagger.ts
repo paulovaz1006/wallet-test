@@ -1,16 +1,26 @@
+import {Express, Request, Response } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
-const options = {
+const options: swaggerJsdoc.Options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Minha API',
+      title: 'Doc api user',
       version: '1.0.0',
     },
   },
-  apis: ['../routes/swagger/*.ts'], 
+  apis: ['./app/routes/swagger/*.ts'], 
 };
 
 const swaggerSpec = swaggerJsdoc(options);
 
-export default swaggerSpec
+function swaggerDocs(app: Express, port: number) {
+  app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.get('docs.json', (req: Request, res: Response) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(swaggerSpec)
+  });
+}
+
+export default swaggerDocs;
