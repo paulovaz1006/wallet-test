@@ -15,6 +15,15 @@ class BalanceUseCase {
       return err
     }
   }
+
+  async update(user_id: string, payload: any) {
+    try {
+      const updateUser = await this.balanceService.updateBalance(user_id, payload);
+      return updateUser
+    } catch (err) {
+      return err
+    }
+  }
 }
 
 export {BalanceUseCase}

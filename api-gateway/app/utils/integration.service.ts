@@ -1,18 +1,23 @@
 import axios from "axios";
 
 class IntegrationService {
-  async request({url, payload, method = 'get'}: any) {
-    const data = payload;
+  async request({url, payload, method}: any) {
     const config = {
-        ...data,
+        data: {
+        },
+        method,
         headers: {
-            method,
             'Content-Type': 'application/json'
         }
     };
 
-    return await axios(url, config)
-    .then(res => { return res.data })
+    if (['post', 'put', 'patch'].includes(method.toLowerCase())) {
+      config["data"] = payload;
+    } 
+    
+    let result = axios(url, config);
+  
+    return await result.then(res => { return res.data })
     .catch(error => {error.data})
   }
 }
