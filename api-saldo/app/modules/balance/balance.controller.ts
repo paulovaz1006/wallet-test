@@ -29,8 +29,13 @@ class BalanceController  {
     if (!user_id) return res.status(HTTPStatus.UNPROCESSABLE).send("User id is required");
 
     try {
-      const success = await this.balanceUseCase.update(user_id, payload);
-      res.status(HTTPStatus.OK).json(success);
+      const success: any = await this.balanceUseCase.update(user_id, payload);
+
+      const formatMessage = {
+        balance: success,
+        message: "Balance updated successfully"
+      }
+      res.status(HTTPStatus.OK).json(formatMessage);
     } catch (err) {
       res.status(HTTPStatus.NOT_FOUND).send("Failed to update balance");
     }
@@ -38,7 +43,7 @@ class BalanceController  {
 
   post = async (req: Request, res: Response): Promise<string | any> => {
     const payload: TBalance = req.body;
-
+    
     try {
       const success = await this.balanceUseCase.post(payload);
       res.status(HTTPStatus.OK).json(success);
