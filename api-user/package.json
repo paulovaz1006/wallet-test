@@ -4,7 +4,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev app/index.ts --watch",
-    "test": "jest"
+    "start": "ts-node-dev app/index.ts --watch",
+    "test": "jest",
+    "build": "tsc",
+    "serve": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
