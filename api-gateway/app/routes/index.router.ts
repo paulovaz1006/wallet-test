@@ -4,9 +4,12 @@ import balanceRoutes from "./balance.router";
 import extractRoutes from "./extract.router";
 
 const router = Router();
+const listRoutes = [
+  userRoutes,
+  balanceRoutes,
+  extractRoutes,
+]
 
-router.use("/", userRoutes)
-router.use("/", balanceRoutes)
-router.use("/", extractRoutes)
+router.use("/", listRoutes)
 
 export default router;

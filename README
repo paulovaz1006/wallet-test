@@ -28,11 +28,6 @@ Alguns pré-requisitos:
 
 
 todo
-
-- colocar no docker
-- adicionar nginx
-- criar migrations
-- api gateway
 - rever o fluxo para ver oque falta (talvez proxy e mensageria)
 - api de user para ter todo o fluxo
 - swagger

@@ -12,7 +12,7 @@ class BalanceService {
             'Content-Type': 'application/json'
         }
     };
-    axios.post('http://localhost:3001/balance',data, config)
+    axios.post('http://api-saldo:3001/balance',data, config)
     .catch(error => {console.log(error.data)})
   }
 }

@@ -10,7 +10,7 @@ class BalanceService {
   async getBalance(user_id: string) {
     const data = {
       method: 'get',
-      url: 'http://localhost:3001/balance/'+ user_id,
+      url: 'http://api-saldo:3001/balance/'+ user_id,
     }
 
     return await this.integrationService.request(data)
@@ -19,7 +19,7 @@ class BalanceService {
   async updateBalance(user_id: string, payload: any) {
     const data = {
       method: 'put',
-      url: 'http://localhost:3001/balance/' + user_id,
+      url: 'http://api-saldo:3001/balance/' + user_id,
       payload: {
         amount: payload.amount,
       }
