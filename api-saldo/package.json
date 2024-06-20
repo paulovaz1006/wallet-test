@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev app/index.ts --watch",
+    "start": "ts-node-dev app/index.ts --watch",
     "test": "jest"
   },
   "keywords": [],
