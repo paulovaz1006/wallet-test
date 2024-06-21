@@ -1,5 +1,5 @@
-Descrição API de extrato:
-Api responsavel por armazenar e consultar extrato financeiro, esta api funciona com eventos de mensageria utilizando kafka.
+Descrição API gateway:
+Api responsavel por gerenciar qual serviço sera utilizado e possui integração com os serviços de extrato, saldo e usuario.
 
 Inicializar o projeto:
   - Comando para rodar a api isolada localmente sem docker
@@ -13,4 +13,4 @@ Rodar os testes:
   npm test
 
 Documentação do projeto:
-  http://localhost:3002/docs
+  http://localhost:3000/docs

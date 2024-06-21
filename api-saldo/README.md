@@ -1,5 +1,5 @@
-Descrição API de extrato:
-Api responsavel por armazenar e consultar extrato financeiro, esta api funciona com eventos de mensageria utilizando kafka.
+Descrição API de saldo:
+Api responsavel por atualizar e consultar o saldo do cliente, a api de user também utiliza essa api, assim que o usuario é criado ele registra o saldo.
 
 Inicializar o projeto:
   - Comando para rodar a api isolada localmente sem docker
