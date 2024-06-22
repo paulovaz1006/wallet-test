@@ -4,13 +4,11 @@ import UserEntity from "./app/entity/user.entity"
 
 export const AppDataSource = new DataSource({
     type: "postgres",
-    host: "localhost",
+    host: "postgres_apiuser",
     port: 5432,
     username: "apiuser",
     password: "apiuser",
-    // type: "sqlite",
     database: "user",
-    // database: "./app/database/user.sqlite",
     entities: [UserEntity],
     synchronize: true   
 })
