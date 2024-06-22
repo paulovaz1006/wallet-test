@@ -1,4 +1,4 @@
-import { AppDataSource } from "../configs/database/data-source"
+import { AppDataSource } from "../../data-source"
 import AccountsEntity from "../entity/Accounts.entity"
 
 class BalanceRepository {
