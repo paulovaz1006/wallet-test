@@ -71,4 +71,4 @@ Desenvovi uma aplicação baseada em microsserviços e eventos onde tem um api g
   - api-extrato: http://localhost:3002/docs/
   - api-user: http://localhost:3003/docs/
 
-![Fluxo da aplicação](./diagram.png)
+![Fluxo da aplicação](./diagram.svg)
