@@ -5,6 +5,28 @@ networks:
     name: net-wallet
 
 services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.4
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 22181:2181
+  
+  kafka:
+    image: confluentinc/cp-kafka:7.4.4
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
   api-user:
     container_name: api-user
     build: ./api-user
@@ -29,6 +51,8 @@ services:
     restart: always
     ports:
       - 3002:3002
+    depends_on:
+      - kafka
     env_file:
       - ./api-extrato/.env
 
@@ -38,6 +62,11 @@ services:
     restart: always
     ports:
       - 3000:3000
+    depends_on:
+      - api-user
+      - api-saldo
+      - api-extrato
+      - kafka
     env_file:
       - ./api-gateway/.env
 
@@ -69,3 +98,11 @@ services:
 volumes:
   client-volume:
     name: client-volume
+  kafka-volume:
+    name: kafka-volume
+  postgres-apiuser:
+    name: postgres-apiuser
+  # postgres-apisaldo:
+  #   name: postgres-apisaldo
+  # postgres-apiextrato:
+  #   name: postgres-apiextrato
