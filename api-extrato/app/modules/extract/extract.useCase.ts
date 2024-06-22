@@ -14,9 +14,13 @@ class ExtractUseCase {
     return result;
   }
 
-  async saveData(payload: any) {
+  async saveData(payload: {
+    amount: number,
+    description: string,
+    user_id: string,
+    typeTransaction: string,
+}) {
     const result = await this.extractRepository.save(payload);
-    
     return result;
   }
 }
