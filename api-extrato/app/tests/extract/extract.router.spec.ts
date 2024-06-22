@@ -1,28 +1,25 @@
 import request from 'supertest';
 import server from "../../server/";
-import { HTTPStatus } from '../../dto';
+import { AppDataSource } from '../../../data-source';
 
-let app;
-
-beforeEach(() => {
-  const port = 5002;
-
-  app = server.listen(port)
+afterEach(async () => {
+  await AppDataSource.destroy();
 });
 
-afterEach(() => {
-  app.close();
-})
+beforeEach(async () => {
+  await AppDataSource.initialize();
+});
 
 describe("ExtractRoute", () => {
   it("should extract (GET)", async () => {
-    await request(app)
+    await request(server)
       .get("/extract/1")
       .send({
         params: {
           user_id: "1"
         }
-      });
+      })
+      .expect(200)
   })
 
   it.only("should return extract (POST)", async () => {
@@ -33,9 +30,9 @@ describe("ExtractRoute", () => {
       type_transaction_id: "2"
     }
 
-    await request(app)
+    await request(server)
       .post('/extract')
       .send(extractMock)
-      .expect(HTTPStatus.INTERNAL_SERVER_ERROR)
+      .expect(200)
   });
 });

@@ -1,3 +1,4 @@
+import { AppDataSource } from "../../../data-source";
 import { ExtractUseCase } from "../../modules/extract/extract.useCase";
 import { ExtractRepository } from "../../repository/extract.repository";
 
@@ -6,8 +7,13 @@ jest.mock("../../repository/extract.repository");
 describe("ExtractUseCase", () => {
   let extractUseCase: ExtractUseCase;
   let extractRepository: jest.Mocked<ExtractRepository>;
+  
+  afterEach(async () => {
+    await AppDataSource.destroy();
+  });
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    await AppDataSource.initialize();
     extractRepository = new ExtractRepository() as jest.Mocked<ExtractRepository>;
     extractUseCase = new ExtractUseCase();
     (extractUseCase as any).extractRepository = extractRepository;
