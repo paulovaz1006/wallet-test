@@ -16,7 +16,6 @@ class UserController  {
       const result = await this.userUseCase.execute(payload)
       res.status(HTTPStatus.OK).json(result);
     } catch (err) {
-      console.error(err);
       res.status(HTTPStatus.INTERNAL_SERVER_ERROR).json(err);
     }
   }

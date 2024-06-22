@@ -17,7 +17,6 @@ class UserController  {
       
       res.status(HTTPStatus.OK).json(result);
     } catch (err) {
-      console.error(err);
       res.status(HTTPStatus.INTERNAL_SERVER_ERROR).json(err);
     }
   }
