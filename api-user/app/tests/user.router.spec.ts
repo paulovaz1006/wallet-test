@@ -1,32 +1,24 @@
 import request from 'supertest';
 import server from "../server/";
+import { AppDataSource } from '../../data-source';
 
-let app: any;
-
-beforeEach(() => {
-  const port = 5002;
-
-  app = server.listen(port)
+beforeAll(async () => {
+  await AppDataSource.initialize();
 });
 
-afterEach(() => {
-  app.close();
-})
+afterAll(async () => {
+  await AppDataSource.destroy();
+});
 
 describe('POST /user', () => {
   it('should create a new user', async () => {
-    const min = 10000000000;
-    const max = 99999999999;  
-    const cpf = Math.floor(Math.random() * (max - min + 1)) + min;
-
     const newUser = {
       name: "teste",
-      cpf
+      cpf: 111111,
     }
 
-    await request(app)
-      .post('/user')
-      .send(newUser)
-      .expect(500);
+    const response = await request(server).post('/user').send(newUser);
+    
+    expect(response.statusCode).toEqual(200);
   });
 });
