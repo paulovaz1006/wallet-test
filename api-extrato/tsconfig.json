@@ -3,6 +3,7 @@
       "lib": [
          "es6"
       ],
+      "noEmit": true,
       "target": "es6",
       "module": "commonjs",
       "moduleResolution": "node",
@@ -11,7 +12,7 @@
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
       "sourceMap": true,
-      "strict": true,         
+      "strict": false,         
       "skipLibCheck": true,
       "rootDir": "./",
       "strictPropertyInitialization": false,
