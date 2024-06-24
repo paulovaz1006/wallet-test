@@ -1,16 +1,18 @@
 import { Request, Response } from "express";
 import { UserUseCase } from "./user.useCase"
-import { HTTPStatus } from "../../dto";
+import { UserService } from "../../services/user/user.service";
+import { TUser } from "../../dto/types";
+import { HTTPStatus } from "../../dto/enums/HTTPStatus.enum";
 
 class UserController  {
   private userUseCase: UserUseCase;
 
   constructor() {
-    this.userUseCase = new UserUseCase()
+    this.userUseCase = new UserUseCase(new UserService())
   }
 
   post = async (req: Request, res: Response) => {
-    const payload = req.body;
+    const payload: TUser = req.body;
 
     try {
       const result = await this.userUseCase.execute(payload)

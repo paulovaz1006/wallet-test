@@ -1,15 +1,12 @@
-import { ExtractService } from "../../services/extract/extract.service";
+import { IExtractService } from "../../dto/interfaces";
+import { TExtract } from "../../dto/types";
 
 class ExtractUseCase {
-  private extractService: ExtractService;
+  constructor(private extractService: IExtractService) {}
 
-  constructor() {
-    this.extractService = new ExtractService()
-  }
-
-  async execute(payload: any) {
+  async execute(userId: TExtract) {
     try {
-      const createUser = await this.extractService.getExtract(payload);
+      const createUser = await this.extractService.getExtract(userId);
       return createUser
     } catch (err) {
       return err

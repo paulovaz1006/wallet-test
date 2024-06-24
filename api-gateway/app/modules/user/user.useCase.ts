@@ -1,13 +1,10 @@
-import { UserService } from "../../services/user/user.service";
+import { IUserService, IUserUseCase } from "../../dto/interfaces";
+import { TUser } from "../../dto/types";
 
-class UserUseCase {
-  private userService: UserService;
+class UserUseCase implements IUserUseCase {
+  constructor(private userService: IUserService) {}
 
-  constructor() {
-    this.userService = new UserService()
-  }
-
-  async execute(payload: any) {
+  async execute(payload: TUser): Promise<any> {
     try {
       const createUser = await this.userService.createUser(payload);
       return createUser

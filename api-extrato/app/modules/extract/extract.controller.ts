@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { ExtractUseCase } from "./extract.useCase"
+
 import { HTTPStatus, TExtract } from "../../dto";
-import KafkaService from "../../service/kafka";
 
 class ExtractController  {
   private extractUseCase: ExtractUseCase;
