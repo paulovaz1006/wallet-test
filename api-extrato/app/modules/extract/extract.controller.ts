@@ -24,9 +24,25 @@ class ExtractController  {
   }
 
   post = async (req: Request, res: Response) => {
+    console.log("passou 3")
+    const {
+      user_id,
+      amount,
+      description,
+      typeTransaction
+    }: TExtract = req.body;
+
+    const payload = {
+      user_id,
+      amount,
+      description,
+      typeTransaction
+    }      
+  
     try {
-      const result = await createConsumer(this.extractUseCase.saveData) 
-      res.status(HTTPStatus.OK).json(result);
+      await createConsumer(this.extractUseCase.saveData) 
+      const saveData = await this.extractUseCase.saveData(payload)
+      res.status(HTTPStatus.OK).json(saveData);
     } catch (err) {
       res.status(HTTPStatus.INTERNAL_SERVER_ERROR).json(err);
     }
