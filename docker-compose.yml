@@ -69,8 +69,6 @@ services:
       - api-saldo
       - api-extrato
       - kafka
-    env_file:
-      - ./api-gateway/.env
     environment:
       - ENVIRONMENT=docker
       - APILOCAL=localhost
