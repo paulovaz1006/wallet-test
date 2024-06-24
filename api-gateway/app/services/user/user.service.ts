@@ -1,6 +1,7 @@
+import { IUserService } from "../../dto/interfaces"
 import { IntegrationService } from "../../utils/integration.service"
 
-class UserService {
+class UserService implements IUserService  {
   private integrationService:IntegrationService
 
   constructor() {
