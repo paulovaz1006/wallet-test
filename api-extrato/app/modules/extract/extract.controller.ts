@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import { ExtractUseCase } from "./extract.useCase"
 
 import { HTTPStatus, TExtract } from "../../dto";
+import createConsumer from "../../service/kafka";
 
 class ExtractController  {
   private extractUseCase: ExtractUseCase;
@@ -23,33 +24,8 @@ class ExtractController  {
   }
 
   post = async (req: Request, res: Response) => {
-    const {
-      user_id,
-      amount,
-      description,
-      typeTransaction
-    }: TExtract = req.body;
-
-    const payload = {
-      user_id,
-      amount,
-      description,
-      typeTransaction
-    }      
-    let consumer;
-    if (consumer) {
-      console.log("aqui  ", consumer)
-      consumer.close(true, () => {
-        console.log('Consumer closed');
-      });
-      consumer = null;
-      console.log('Consumer stopped');
-    } else {
-      console.log('No consumer is running');
-    }
-
     try {
-      const result = await this.extractUseCase.saveData(payload)
+      const result = await createConsumer(this.extractUseCase.saveData) 
       res.status(HTTPStatus.OK).json(result);
     } catch (err) {
       res.status(HTTPStatus.INTERNAL_SERVER_ERROR).json(err);
