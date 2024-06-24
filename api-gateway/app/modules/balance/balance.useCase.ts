@@ -1,10 +1,10 @@
 import { IBalanceService, IBalanceUseCase } from "../../dto/interfaces";
-import { TBalanceUseCase, TBalanceUseCaseWithoutUserId } from "../../dto/types";
+import { TBalance, TBalanceWithoutUserId } from "../../dto/types";
 
 class BalanceUseCase implements IBalanceUseCase {
   constructor(private balanceService: IBalanceService) {}
 
-  async execute(userId: TBalanceUseCase['userId']) {
+  async execute(userId: TBalance['userId']) {
     try {
       const getBalance = await this.balanceService.getBalance(userId);
       return getBalance;
@@ -13,7 +13,7 @@ class BalanceUseCase implements IBalanceUseCase {
     }
   }
 
-  async update(userId: TBalanceUseCase['userId'], payload: TBalanceUseCaseWithoutUserId) {
+  async update(userId: TBalance['userId'], payload: TBalanceWithoutUserId) {
     try {
       const updateUser = await this.balanceService.updateBalance(userId, payload);
       return updateUser

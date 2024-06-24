@@ -2,6 +2,8 @@ import axios from "axios";
 
 class BalanceService {
   createBalance(user_id: string, balance: number) {
+    const localhost = process.env.APISALDO;
+
     const data = {
       balance: balance,
       user_id: user_id
@@ -12,7 +14,7 @@ class BalanceService {
             'Content-Type': 'application/json'
         }
     };
-    axios.post('http://api-saldo:3001/balance',data, config)
+    axios.post(`http://${localhost}:3001/balance`,data, config)
     .catch(error => {console.log(error.data)})
   }
 }

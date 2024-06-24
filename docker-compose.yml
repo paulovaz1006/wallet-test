@@ -12,7 +12,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
     ports:
       - 22181:2181
-  
+
   kafka:
     image: confluentinc/cp-kafka:7.4.4
     depends_on:
@@ -35,6 +35,8 @@ services:
       - 3003:3003
     env_file:
       - ./api-user/.env
+    environment:
+      - APISALDO=api-saldo
 
   api-saldo:
     container_name: api-saldo
@@ -69,6 +71,12 @@ services:
       - kafka
     env_file:
       - ./api-gateway/.env
+    environment:
+      - ENVIRONMENT=docker
+      - APILOCAL=localhost
+      - APISALDO=api-saldo
+      - APIEXTRATO=api-extrato
+      - APIUSER=api-user
 
   client:
     container_name: client
@@ -100,9 +108,3 @@ volumes:
     name: client-volume
   kafka-volume:
     name: kafka-volume
-  postgres-apiuser:
-    name: postgres-apiuser
-  # postgres-apisaldo:
-  #   name: postgres-apisaldo
-  # postgres-apiextrato:
-  #   name: postgres-apiextrato

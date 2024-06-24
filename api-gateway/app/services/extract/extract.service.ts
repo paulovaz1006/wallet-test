@@ -10,9 +10,10 @@ class ExtractService implements IExtractService {
   }
   
   async getExtract(userId: TExtract) {
+    const urlBase = process.env.APIEXTRATO
     const data = {
       method: 'get',
-      url: 'http://api-extrato:3002/extract/' + userId,
+      url: `http://${urlBase}3002/extract/${userId}`,
     }
 
     return await this.integrationService.request(data)

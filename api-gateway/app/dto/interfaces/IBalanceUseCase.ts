@@ -1,6 +1,6 @@
-import { TBalanceUseCase, TBalanceUseCaseWithoutUserId } from "../types";
+import { TBalance, TBalanceWithoutUserId } from "../types";
 
 export interface IBalanceUseCase {
-  execute(userId: TBalanceUseCase['userId']): Promise<any>;
-  update(userId: TBalanceUseCase['userId'], payload: TBalanceUseCaseWithoutUserId): Promise<any>;
+  execute(userId: TBalance['userId']): Promise<any>;
+  update(userId: TBalance['userId'], payload: TBalanceWithoutUserId): Promise<any>;
 }

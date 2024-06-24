@@ -9,9 +9,10 @@ class UserService implements IUserService  {
   }
 
   async createUser({name,cpf}: any) {
+    const urlBase = process.env.APIUSER
     const data = {
       method: 'post',
-      url: 'http://api-user:3003/user',
+      url: `http://${urlBase}:3003/user`,
       payload: {
           name,
           cpf

@@ -4,7 +4,7 @@ import server from "./server";
 
 AppDataSource.initialize().then(async () => {
   const port = process.env.PORT || 3002;
-
+  const locahost = process.env.APILOCAL
   server.listen(port, () => {
     swaggerDocs(server, Number(port))
     console.log(`Run server api-extrato in http://localhost:${port}`)

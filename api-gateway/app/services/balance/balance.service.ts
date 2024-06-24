@@ -10,21 +10,22 @@ class BalanceService implements IBalanceService {
   }
 
   async getBalance(userId: TBalance["userId"]) {
+    const urlBase = process.env.APISALDO
     const data = {
       method: 'get',
-      url: 'http://api-saldo:3001/balance/'+ userId,
+      url: `http://${urlBase}:3001/balance/${userId}`,
     }
 
     return await this.integrationService.request(data)
   }
 
   async updateBalance(userId: TBalance["userId"], payload: TBalanceWithoutUserId) {
+    const urlBase = process.env.APISALDO
+    console.log(`updateBalance`, payload)
     const data = {
       method: 'put',
-      url: 'http://api-saldo:3001/balance/' + userId,
-      payload: {
-        amount: payload.amount,
-      }
+      url: `http://${urlBase}:3001/balance/${userId}`,
+      payload
     }
 
     return await this.integrationService.request(data)
