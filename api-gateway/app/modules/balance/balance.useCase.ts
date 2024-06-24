@@ -1,24 +1,21 @@
-import { BalanceService } from "../../services/balance/balance.service";
+import { IBalanceService, IBalanceUseCase } from "../../dto/interfaces";
+import { TBalanceUseCase, TBalanceUseCaseWithoutUserId } from "../../dto/types";
 
-class BalanceUseCase {
-  private balanceService: BalanceService;
+class BalanceUseCase implements IBalanceUseCase {
+  constructor(private balanceService: IBalanceService) {}
 
-  constructor() {
-    this.balanceService = new BalanceService()
-  }
-
-  async execute(payload: any) {
+  async execute(userId: TBalanceUseCase['userId']) {
     try {
-      const createUser = await this.balanceService.getBalance(payload);
-      return createUser
+      const getBalance = await this.balanceService.getBalance(userId);
+      return getBalance;
     } catch (err) {
       return err
     }
   }
 
-  async update(user_id: string, payload: any) {
+  async update(userId: TBalanceUseCase['userId'], payload: TBalanceUseCaseWithoutUserId) {
     try {
-      const updateUser = await this.balanceService.updateBalance(user_id, payload);
+      const updateUser = await this.balanceService.updateBalance(userId, payload);
       return updateUser
     } catch (err) {
       return err

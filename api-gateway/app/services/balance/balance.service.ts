@@ -1,25 +1,27 @@
+import { IBalanceService } from "../../dto/interfaces"
+import { TBalance, TBalanceWithoutUserId } from "../../dto/types"
 import { IntegrationService } from "../../utils/integration.service"
 
-class BalanceService {
+class BalanceService implements IBalanceService {
   private integrationService:IntegrationService
 
   constructor() {
     this.integrationService = new IntegrationService()
   }
 
-  async getBalance(user_id: string) {
+  async getBalance(userId: TBalance["userId"]) {
     const data = {
       method: 'get',
-      url: 'http://api-saldo:3001/balance/'+ user_id,
+      url: 'http://api-saldo:3001/balance/'+ userId,
     }
 
     return await this.integrationService.request(data)
   }
 
-  async updateBalance(user_id: string, payload: any) {
+  async updateBalance(userId: TBalance["userId"], payload: TBalanceWithoutUserId) {
     const data = {
       method: 'put',
-      url: 'http://api-saldo:3001/balance/' + user_id,
+      url: 'http://api-saldo:3001/balance/' + userId,
       payload: {
         amount: payload.amount,
       }

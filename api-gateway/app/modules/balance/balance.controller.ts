@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
-import { HTTPStatus } from "../../dto";
+import { HTTPStatus } from "../../dto/enums/HTTPStatus.enum";
 import { BalanceUseCase } from "./balance.useCase";
-import kafka from "kafka-node";
 import sendProducer from "../../services/kafka";
+import { BalanceService } from "../../services/balance/balance.service";
 class BalanceController  {
   private balanceUseCase: BalanceUseCase;
 
   constructor() {
-    this.balanceUseCase = new BalanceUseCase()
+    this.balanceUseCase = new BalanceUseCase(new BalanceService())
   }
 
   get = async (req: Request, res: Response) => {
