@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 import { HTTPStatus } from "../../dto/enums/HTTPStatus.enum";
 import { BalanceUseCase } from "./balance.useCase";
-import sendProducer from "../../services/kafka";
 import { BalanceService } from "../../services/balance/balance.service";
+import { ExtractService } from "../../services/extract/extract.service";
 class BalanceController  {
   private balanceUseCase: BalanceUseCase;
 
   constructor() {
-    this.balanceUseCase = new BalanceUseCase(new BalanceService())
+    this.balanceUseCase = new BalanceUseCase(new BalanceService(), new ExtractService());
   }
 
   get = async (req: Request, res: Response) => {
@@ -35,13 +35,6 @@ class BalanceController  {
     } catch (err) {
       return res.status(HTTPStatus.NOT_FOUND).send("Failed to update balance");
     }
-
-    const payloadToBankStatement = {
-      user_id,
-      ...req.body,
-    };
-    
-    await sendProducer(payloadToBankStatement)
 
     return res.status(HTTPStatus.OK).json(success);
   }
