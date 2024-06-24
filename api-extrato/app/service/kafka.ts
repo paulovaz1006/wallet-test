@@ -2,7 +2,7 @@ const kafka = require('kafka-node');
 
 const client = new kafka.KafkaClient({ kafkaHost: 'kafka:9092' });
 
-function createConsumer() {
+function createConsumer(callback) {
   const consumer = new kafka.Consumer(
     client,
     [{ topic: 'bankStatement', partition: 0 }],
@@ -10,7 +10,8 @@ function createConsumer() {
   );
 
   consumer.on('message', (message) => {
-    console.log('Received message:', message);
+    console.log('Received message:', message.value);
+    callback(message.value);   
   });
 
   consumer.on('error', (err) => {

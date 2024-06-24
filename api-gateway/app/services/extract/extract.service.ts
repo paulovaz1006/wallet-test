@@ -18,6 +18,17 @@ class ExtractService implements IExtractService {
 
     return await this.integrationService.request(data)
   }
+
+  async postExtract(payload: TExtract) {
+    const urlBase = process.env.APIEXTRATO
+    const data = {
+      method: 'post',
+      url: `http://${urlBase}3002/extract`,
+      payload
+    }
+
+    return await this.integrationService.request(data)
+  }
 }
 
 export {ExtractService}
