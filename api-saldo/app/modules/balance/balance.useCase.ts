@@ -22,7 +22,6 @@ class BalanceUseCase {
   }
 
   async update(user_id: string, payload: any){
-    console.log("dfsodfj", payload);
     const {amount, type_transaction_id} = payload;
     let newAmount;
     const getBalance = await this.balanceRepository.findBalance(user_id);

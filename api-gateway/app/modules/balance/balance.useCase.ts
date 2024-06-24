@@ -25,7 +25,9 @@ class BalanceUseCase implements IBalanceUseCase {
       };
 
       await sendProducer(payloadToBankStatement)
-      await this.extractService.postExtract(payloadToBankStatement);
+      console.log("passou 1")
+      this.extractService.postExtract(payloadToBankStatement);
+      console.log("passou 2")
       return updateUser
     } catch (err) {
       return err

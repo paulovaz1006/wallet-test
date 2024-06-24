@@ -4,6 +4,7 @@ async function sendProducer(payloadToBankStatement: any) {
   const Producer = kafka.Producer;
   const client = new kafka.KafkaClient({ kafkaHost: 'kafka:9092' });
   const producer = new Producer(client);
+  console.log(payloadToBankStatement)
 
   const payloads = [
     { topic: 'bankStatement', messages: payloadToBankStatement, partition: 0 }
