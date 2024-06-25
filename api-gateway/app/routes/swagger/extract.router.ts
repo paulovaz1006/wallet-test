@@ -22,14 +22,14 @@
  *               items:
  *                 type: object
  *                 properties:
- *                   transaction_id:
+ *                   id:
+ *                     type: string
+ *                   date:
+ *                     type: date 
+ *                   description:
  *                     type: string
  *                   amount:
  *                     type: number
- *                   date:
- *                     type: string
- *                   description:
- *                     type: string
  *       400:
  *         description: Invalid user ID
  *       500:

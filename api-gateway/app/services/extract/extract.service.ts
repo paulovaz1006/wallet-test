@@ -13,7 +13,7 @@ class ExtractService implements IExtractService {
     const urlBase = process.env.APIEXTRATO
     const data = {
       method: 'get',
-      url: `http://${urlBase}3002/extract/${userId}`,
+      url: `http://${urlBase}:3002/extract/${userId}`,
     }
 
     return await this.integrationService.request(data)
@@ -23,7 +23,7 @@ class ExtractService implements IExtractService {
     const urlBase = process.env.APIEXTRATO
     const data = {
       method: 'post',
-      url: `http://${urlBase}3002/extract`,
+      url: `http://${urlBase}:3002/extract`,
       payload
     }
 

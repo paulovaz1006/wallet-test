@@ -55,8 +55,9 @@ services:
       - 3002:3002
     depends_on:
       - kafka
-    env_file:
-      - ./api-extrato/.env
+    environment:
+      - ENVIRONMENT=docker
+      - APILOCAL=localhost
 
   api-gateway:
     container_name: api-gateway

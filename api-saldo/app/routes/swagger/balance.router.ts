@@ -22,6 +22,10 @@
  *               properties:
  *                 balance:
  *                   type: number
+ *                 id:
+ *                   type: uuid
+ *                 user_id:
+ *                   type: string
  *       400:
  *         description: Invalid user ID
  *       500:
@@ -44,38 +48,18 @@
  *           schema:
  *             type: object
  *             properties:
- *               balance:
- *                 type: number
- *     responses:
- *       200:
- *         description: Balance updated successfully
- *       400:
- *         description: Invalid input
- *       500:
- *         description: Internal server error
- *   post:
- *     tags:
- *       - Saldo
- *     description: Create a new balance entry
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               user_id:
- *                 type: string
- *                 example: "12345"
  *               amount:
  *                 type: number
- *                 example: 100.0
  *               description:
  *                 type: string
- *                 example: "Payment received"
+ *               user_id:
+ *                  type: string
+ *               type_transaction_id:
+ *                  type: string 
  *     responses:
- *       201:
- *         description: Balance entry created successfully
+ *       200:
+ *         balance: 0,
+ *         description: Balance updated successfully
  *       400:
  *         description: Invalid input
  *       500:
