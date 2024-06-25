@@ -19,9 +19,9 @@ describe("UserUseCase", () => {
     await AppDataSource.initialize();
     userUseCase = new UserUseCase();
 
-    jest.spyOn(userUseCase, 'saveData').mockImplementation(async (payload: { name: string; cpf: number }) => {
+    jest.spyOn(userUseCase, 'saveData').mockImplementation(async (payload: { name: string; cnpj: number }) => {
       return {
-        cpf: payload.cpf,
+        cnpj: payload.cnpj,
         message: "User created successfully",
       };
     });
@@ -30,12 +30,12 @@ describe("UserUseCase", () => {
   it("should return user created", async () => {
     const mockPayload = {
       name: "teste",
-      cpf: 111111111,
+      cnpj: 111111111,
     };
 
     const response = await userUseCase.saveData(mockPayload);
 
-    expect(response).toHaveProperty("cpf");
+    expect(response).toHaveProperty("cnpj");
     expect(response).toHaveProperty("message");
   });
 });

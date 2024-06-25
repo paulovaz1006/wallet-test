@@ -5,7 +5,7 @@ describe('POST /user', () => {
   it('should create a new user', async () => {
     const newUser = {
       name: "teste",
-      cpf: 111111,
+      cnpj: 111111,
     }
 
     const response = await request(server).post('/user').send(newUser);

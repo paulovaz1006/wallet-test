@@ -9,9 +9,9 @@ class UserUseCase {
   }
 
   async saveData(payload: any) {
-    const userExists = await this.userRepository.findByCpf(payload.cpf);
+    const userExists = await this.userRepository.findBycnpj(payload.cnpj);
 
-    if (userExists) return {cpf: userExists.cpf, message: "User already exists"};
+    if (userExists) return {cnpj: userExists.cnpj, message: "User already exists"};
 
     const result = await this.userRepository.save(payload);
     

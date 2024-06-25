@@ -22,6 +22,10 @@
  *               properties:
  *                 balance:
  *                   type: number
+ *                 id:
+ *                   type: uuid
+ *                 user_id:
+ *                   type: string
  *       400:
  *         description: Invalid user ID
  *       500:
@@ -44,10 +48,17 @@
  *           schema:
  *             type: object
  *             properties:
- *               balance:
+ *               amount:
  *                 type: number
+ *               description:
+ *                 type: string
+ *               user_id:
+ *                  type: string
+ *               type_transaction_id:
+ *                  type: string 
  *     responses:
  *       200:
+ *         balance: 0,
  *         description: Balance updated successfully
  *       400:
  *         description: Invalid input

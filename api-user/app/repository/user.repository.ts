@@ -14,8 +14,8 @@ class UserRepository {
     return await this.repositoryEntity.save({...payload, ...userEntity})
   }
 
-  async findByCpf(cpf: number) { 
-    return await this.repositoryEntity.findOneBy({cpf})
+  async findBycnpj(cnpj: number) { 
+    return await this.repositoryEntity.findOneBy({cnpj})
   }
 }
 

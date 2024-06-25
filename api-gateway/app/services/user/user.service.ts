@@ -8,14 +8,14 @@ class UserService implements IUserService  {
     this.integrationService = new IntegrationService()
   }
 
-  async createUser({name,cpf}: any) {
+  async createUser({name,cnpj}: any) {
     const urlBase = process.env.APIUSER
     const data = {
       method: 'post',
       url: `http://${urlBase}:3003/user`,
       payload: {
           name,
-          cpf
+          cnpj
       }
     }
 

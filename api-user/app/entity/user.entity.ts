@@ -10,7 +10,7 @@ export default class UserEntity {
     name: string;
 
     @Column()
-    cpf: number;
+    cnpj: number;
 
     constructor() {
         this.id = uuid();

@@ -12,17 +12,14 @@
  *           schema:
  *             type: object
  *             properties:
+ *               cnpj:
+ *                 type: number
+ *                 example: 4666723490
  *               name:
  *                 type: string
- *                 example: "John Doe"
- *               email:
- *                 type: string
- *                 example: "john.doe@example.com"
- *               password:
- *                 type: string
- *                 example: "password123"
+ *                 example: "teste"
  *     responses:
- *       201:
+ *       200:
  *         description: User created successfully
  *         content:
  *           application/json:
@@ -30,14 +27,14 @@
  *               type: object
  *               properties:
  *                 id:
- *                   type: string
- *                   example: "12345"
+ *                   type: uuid
+ *                   example: "f1e047cb-4958-4b00-96d9-a6a77e83c923"
  *                 name:
  *                   type: string
- *                   example: "John Doe"
- *                 email:
+ *                   example: "Teste"
+ *                 message:
  *                   type: string
- *                   example: "john.doe@example.com"
+ *                   example: "User and balance created successfully"
  *       400:
  *         description: Invalid input
  *       500:
